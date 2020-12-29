@@ -1,0 +1,1 @@
+dotnet clean & dotnet build & rmdir migrations /s & dotnet ef migrations add migration & dotnet ef database update & dotnet watch run

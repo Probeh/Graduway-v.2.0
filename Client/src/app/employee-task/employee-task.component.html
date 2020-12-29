@@ -1,0 +1,84 @@
+<div
+  class="card h-100"
+  style="background: transparent;"
+>
+  <div
+    class="card-header p-1 bg-info"
+    style="border-radius: 0px;"
+  ></div>
+  <div class="shadow p-5 mb-0">
+    <h1 class="display-3 text-info"><i class="fa fa-calendar-check-o"></i> Task List</h1>
+    <p
+      class="lead m-0 text-info"
+      style="font-weight:bold"
+    >{{this.currentEmployee?.title}}</p>
+  </div>
+  <div
+    class="card-body h-100 overflow-auto"
+    style="background: transparent;"
+  >
+    <div
+      class="alert p-3"
+      [ngClass]="{'alert-primary': item.priority == 2, 'alert-warning': item.priority == 1, 'alert-danger': item.priority == 0}"
+      role="alert"
+      *ngFor="let item of this.$employeeTasks | async; let index = index"
+      (click)="this.onSelectedTask(item)"
+    >
+      <i class="fa fa-exclamation-triangle"></i> {{item.title}}
+    </div>
+  </div>
+  <div
+    class="card-footer"
+    style="display: flex; align-items: center;"
+  >
+    <button
+      class="btn btn-block btn-lg btn-outline-primary"
+      data-toggle="modal"
+      data-target="#newTaskModal"
+    ><i class="fa fa-calendar-check-o mr-2"></i> Add Task</button>
+  </div>
+</div>
+
+<div
+  class="modal fade"
+  id="newTaskModal"
+  tabindex="-1"
+  role="dialog"
+  aria-hidden="true"
+>
+  <div
+    class="modal-dialog"
+    role="document"
+  >
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-info"><i class="fa fa-calendar-check-o mr-2"></i> New Task</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form
+          [formGroup]="this.taskForm"
+          (ngSubmit)="this.onCreateTask()"
+        ></form>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          data-dismiss="modal"
+        >Close</button>
+        <button
+          type="button"
+          class="btn btn-primary"
+        >Save</button>
+      </div>
+    </div>
+  </div>
+</div>

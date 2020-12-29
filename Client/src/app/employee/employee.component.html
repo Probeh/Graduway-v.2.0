@@ -1,0 +1,52 @@
+<div
+  class="card h-100"
+  style="background: transparent;"
+>
+  <div
+    class="card-header p-1 bg-info"
+    style="border-radius: 0px;"
+  ></div>
+  <div class="shadow p-5 mb-0">
+    <h1 class="display-3 text-info"><i class="fa fa-users"></i> Employees List</h1>
+    <p
+      class="lead m-0 text-info"
+      style="font-weight: bold"
+    >{{this.employee?.title}}</p>
+  </div>
+  <div
+    class="card-body h-100 overflow-auto"
+    style="background: transparent;"
+  >
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Image</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Gender</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          (click)="this.onSelectedEmployee(item)"
+          [ngClass]="{'active':this.employee.id == item.id}"
+          *ngFor="let item of this.$employees | async; let index = index"
+          class="results"
+        >
+          <td
+            class="align-middle"
+            scope="row"
+          >{{index + 1}}</td>
+          <td class="align-middle"><img
+              [src]="item.picture"
+              style="border-radius: 50%; height: 35px;"
+            ></td>
+          <td class="align-middle">{{item.firstName}}</td>
+          <td class="align-middle">{{item.lastName}}</td>
+          <td class="align-middle">{{item.gender}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

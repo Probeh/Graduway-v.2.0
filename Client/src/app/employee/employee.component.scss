@@ -1,0 +1,15 @@
+td {
+  padding: 5px;
+}
+.results {
+  transition: ease-in 350ms;
+  cursor: pointer;
+}
+.results:hover {
+  @extend .active;
+}
+.active {
+  background: lightskyblue;
+  color: white;
+  transition: ease-in 250ms;
+}

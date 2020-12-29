@@ -1,0 +1,1 @@
+robocopy /mir /s /e . %onedrive%\\snapshots\\Graduway\\snapshot-%date:~0,2%-%date:~3,2%-%date:~-4%_%random% /xd "\\Client\\node_modules" /xd "\\Client\\.git" /xd "\\Client\\dist" /xd "\\Client\\e2e" & exit

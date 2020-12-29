@@ -1,0 +1,13 @@
+<div class="content">
+  <div class="content-header">
+    <app-navigation></app-navigation>
+  </div>
+  <div class="content-body">
+    <div class="content-panel">
+      <app-employee (selectedEmployee)="this.onSelectedEmployee($event)"></app-employee>
+    </div>
+    <div class="content-panel">
+      <app-employee-task [employee]="this.selectedEmployee"></app-employee-task>
+    </div>
+  </div>
+</div>
